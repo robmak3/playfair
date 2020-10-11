@@ -6,7 +6,8 @@ Based off of:
 https://www.dcode.fr/playfair-cipher
 
 ## In Python Terminal:
-encode(message, 25 character key)
+encode(message, 25 character key) 
+
 decode(message, 25 character key)
 
 ## Command Line:
