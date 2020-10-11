@@ -1,6 +1,6 @@
 # Playfair Cipher Machine
 
-Cybersecurity HW due 10/11/2020
+Cybersecurity HW due 10/13/2020
 
 Based off of:
 https://www.dcode.fr/playfair-cipher
