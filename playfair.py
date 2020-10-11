@@ -28,20 +28,20 @@ def encode(m, s):
         r0w = -500
         r1w = 500
         if tls[i][0] == tls[i][1]:
-            tls.append(['','z'])
+            tls.append(['',''])
             for l in range(len(tls[i+1:])):
                 tls[(-1 * l - 1)][1] = tls[-1*l-1][0]
                 tls[(-1 * l - 1)][0] = tls[-1*l-2][1]
             tls[i][1] = "X"
-            print(tls[i])
+            #print(tls[i])
             iwannasee += 1
         boolean = True
         for row in range(5):
             if table[row].count(tls[i][0]) == 1 and table[row].count(tls[i][1]) == 1 and boolean:
-                print('rows same', tls[i])
+                #print('rows same', tls[i])
                 tls[i][0] = table[row + 1][table[row].index(tls[i][0])]
                 tls[i][1] = table[row + 1][table[row].index(tls[i][1])]
-                print(tls[i])
+                #print(tls[i])
                 boolean = False
             else:
                 for column in range(5):
@@ -66,12 +66,22 @@ def encode(m, s):
             tls[i][1] = table[r1w][colum0]
                 #print(tls[i], "step 3", table[r0w][colum1], table[r1w][colum0], "\n")
     if iwannasee > 0:
-        print(iwannasee)
+        #print(iwannasee, 'iwannasee')
         saving = tls
+        #for i in range(len(tls)):
+            #for l in range(2):
+                #if tls[i][l] == '':
+                    #tls[i][l] = 'Z'
         for i in range(iwannasee):
-            print(saving)
-            tls[i*-1-1] = encode(''.join(tls[-1*i-1]), s)
-            print(tls[i*-1-1])
+            #print('\n archive save ', saving, '\n')
+            if tls[i*-1-1][0] == '':
+                tls[i*-1-1] = encode(''.join(tls[-1*i-1]), s)
+            elif tls[i*-1-1][1] == "":
+                tls[i*-1-1][1] = 'Z'
+                tls[i*-1-1] = encode(''.join(tls[-1*i-1]), s)
+            else:
+                tls[i*-1-1] = encode(''.join(tls[-1*i-1]), s)
+            #print(tls[i*-1-1], '  \n', tls)
     finalstwing = ""
     for i in range(len(tls)):
         finalstwing += ''.join(tls[i])
